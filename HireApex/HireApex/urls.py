@@ -19,9 +19,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('home.urls')),
-    path('home/', TemplateView.as_view(template_name='dashboard/home.html'),name='home'),
-    path('faq/', TemplateView.as_view(template_name='extra/faq.html'),name='faq'),
-    path('contact-us/', TemplateView.as_view(template_name='extra/contactus.html'),name='contact_us'),
+    path('home/', include('land.urls')),
+    #path('home/', TemplateView.as_view(template_name='dashboard/home.html'),name='home'),
+    #path('faq/', TemplateView.as_view(template_name='extra/faq.html'),name='faq'),
+    #path('contact-us/', TemplateView.as_view(template_name='extra/contactus.html'),name='contact_us'),
     path('accounts/', include('allauth.urls')),
 ]
