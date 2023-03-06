@@ -1,0 +1,14 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+    <div class="text-center">
+        <h2>Welcome to HireApex</h2>
+        <p>Hello {{ user.first_name }}!</p>
+        <p>Your Username : {{ user }}</p>
+        <a class="btn btn-dark" href="{% url 'socialaccount_connections' %}">Settings</a>
+        <ul>
+            <li><a href="{% url 'contact_us' %}">Contact Us Form</a></li>
+            <li><a href="{% url 'faq' %}">FAQ</a></li>
+          </ul>
+    </div>
+{% endblock %}
