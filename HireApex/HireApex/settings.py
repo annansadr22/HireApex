@@ -152,8 +152,7 @@ STATICFILES_DIRS = [BASE_DIR / "static",]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#558680852448-jnjak98meevp03iiiutu66o5n93d9e3c.apps.googleusercontent.com
-#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
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
