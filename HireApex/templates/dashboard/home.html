@@ -5,10 +5,34 @@
         <h2>Welcome to HireApex</h2>
         <p>Hello {{ user.first_name }}!</p>
         <p>Your Username : {{ user }}</p>
-        <a class="btn btn-dark" href="{% url 'socialaccount_connections' %}">Settings</a>
-        <ul>
-            <li><a href="{% url 'contact_us' %}">Contact Us Form</a></li>
-            <li><a href="{% url 'faq' %}">FAQ</a></li>
-          </ul>
+        <!--a class="btn btn-dark" href="{% url 'socialaccount_connections' %}">Settings</a-->
+        <div class="links" style="margin-top: 20px;">
+            <a class="btn btn-primary btn-lg" href="{% url 'form_job' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you Hiring for a Project?</a>
+            <a class="btn btn-success btn-lg" href="{% url 'form_freelance' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you a Freelancer?</a>
+        </div>
     </div>
+
+
+{% block footer %}
+    <footer class="bg-dark text-center text-lg-start">
+        <div class="container p-4" style="margin-top: 100px;">
+            <div class="column">
+                <div class="col-lg-6 col-md-12">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="{% url 'contact_us' %}" class="btn btn-info btn-lg" style="font-size: 0.8rem; padding: 1rem 2rem;">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4" style="margin-top: 20px;">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="{% url 'faq' %}" class="btn btn-info btn-lg" style="font-size: 0.8rem; padding: 1rem 2rem;">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
 {% endblock %}
