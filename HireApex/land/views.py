@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import UserProfile,JobProfile,SkillSet,Language
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
@@ -50,6 +50,7 @@ class UserProfileCreate(CreateView):
     # language = ModelMultipleChoiceField(queryset=Language.objects.all())
     model = UserProfile
     fields = [ 'full_name', 'profile_picture','money_per_hour','language','skills']
+    template_name_suffix="_form"
     # widgets = {
     #         'language': forms.Select(),
     #         'skills': forms.CheckboxSelectMultiple()
@@ -71,7 +72,8 @@ class UserProfileCreate(CreateView):
     def form_valid(self, form):
         form.instance.username = self.request.user.username
         return super().form_valid(form)
-    
+    def get_object(self):
+        return UserProfile.objects.get(pk=self.request.POST.get("pk"))
 
 class UserProfileListView(ListView):
     queryset=UserProfile.objects.all()

@@ -1,29 +1,28 @@
+{% extends 'account/base.html' %}
 {% block content %}
 <div class="flex">
   <div class="container">
-    <h1>User Profiles</h1>
-    <hr>
+    <h1>Profile</h1>
     <div class="row">
       {% for user_profile in object_list %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             {% if user_profile.username == user.username%}
             {% if user_profile.profile_picture %}
-            <div class="profile-info">
-              <div class="profile-pic-container bg-secondary">
-                <img class="profile-pic" src="{{ user_profile.profile_picture.url }}" alt="Profile pic">
-              </div>
-              <div class="profile-name-container text-center">
-                <h3>{{ user_profile.full_name }}</h3>
-                <h5>{{ user_profile.username }}</h5>
-              </div>
+            <div class="profile-pic-container">
+              <img class="profile-pic" src="{{ user_profile.profile_picture.url }}" alt="Profile pic">
+              <img class="w-32 border rounded-full mr-4" src="{{ user_profile.profile_picture.url }}" alt="Profile pic">
             </div>
             {% else %}
               <div class="d-flex justify-content-center align-items-center" style="height: 150px;">
                 <span class="text-muted">No profile picture</span>
               </div>
             {% endif %}
+            <div class="card-body profile-info">
+              <h4>{{ user_profile.full_name }}</h4>
+              <p class="card-text">Username: {{ user_profile.username }}</p>
             {% endif %}
+            </div>
           </div>
         </div>
       {% empty %}
@@ -40,34 +39,28 @@
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem;
   }
   
   .profile-pic {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 
-  .profile-name-container {
-    font-size: 1.25rem;
-  }
-
   .profile-info {
+    color:blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
   }
 
-  .profile-info h3,
-  .profile-info h5 {
+  .profile-info h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-info .card-text {
     margin: 0;
-    font-weight: bold;
-    color: #333;
   }
 </style>

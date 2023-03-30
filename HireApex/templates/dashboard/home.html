@@ -3,13 +3,13 @@
 {% block content %}
 <div class="text-center">
     <h2>Welcome to HireApex</h2>
-    <p>Hello {{ user.first_name }}!</p>
+    <!--p>Hello {{ user.first_name }}!</p-->
     <p>Your Username : {{ user }}</p>
-    <a class="btn btn-dark" href="{% url 'socialaccount_connections' %}">Settings</a>
+    <!--a class="btn btn-dark" href="{% url 'socialaccount_connections' %}">Settings</a-->
     <div class="links" style="margin-top: 20px;">
         <a class="btn btn-primary btn-lg" href="{% url 'form_job' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you Hiring for a Project?</a>
-        <a class="btn btn-success btn-lg" href="{% url 'form_freelance' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you a Freelancer?</a>
-        <a class="btn btn-info btn-lg" href="{% url 'search' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Search for Jobs</a>
+        <!--a class="btn btn-success btn-lg" href="{% url 'form_freelance' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you a Freelancer?</a-->
+        <a class="btn btn-info btn-lg" href="{% url 'search' %}" style="font-size: 2.5rem; padding: 7rem 2.5rem;">Are you a Freelancer? Search for Jobs</a>
     </div>
 </div>
 
