@@ -49,7 +49,7 @@ class UserProfileCreate(CreateView):
     # skills = ModelMultipleChoiceField(queryset=SkillSet.objects.all())
     # language = ModelMultipleChoiceField(queryset=Language.objects.all())
     model = UserProfile
-    fields = [ 'full_name', 'profile_picture','money_per_hour','language','skills']
+    fields = [ 'full_name', 'profile_picture','money_per_hour','bio','language','skills']
     template_name_suffix="_form"
     # widgets = {
     #         'language': forms.Select(),

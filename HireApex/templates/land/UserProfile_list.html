@@ -1,17 +1,20 @@
+
 {% extends 'account/base.html' %}
+{% load static %}
+    <link rel=”stylesheet” href=”{% static "css/1.css" %}”>
 {% block content %}
 <div class="flex">
   <div class="container">
     <h1>Profile</h1>
     <div class="row">
       {% for user_profile in object_list %}
-        <div class="col-md-4">
+        <div class="col-md-10">
           <div class="card mb-4 shadow-sm">
             {% if user_profile.username == user.username%}
             {% if user_profile.profile_picture %}
             <div class="profile-pic-container">
-              <img class="profile-pic" src="{{ user_profile.profile_picture.url }}" alt="Profile pic">
-              <img class="w-32 border rounded-full mr-4" src="{{ user_profile.profile_picture.url }}" alt="Profile pic">
+              <img class="profile-pic" src="{{ user_profile.profile_picture.url }}" alt="Profile pic" height="200" width="200" >
+              <!--img class="w-32 border rounded-full mr-4" src="{{ user_profile.profile_picture.url }}" alt="Profile pic" height="200" width="200"-->
             </div>
             {% else %}
               <div class="d-flex justify-content-center align-items-center" style="height: 150px;">
@@ -20,18 +23,61 @@
             {% endif %}
             <div class="card-body profile-info">
               <h4>{{ user_profile.full_name }}</h4>
-              <p class="card-text">Username: {{ user_profile.username }}</p>
+              <p class="card-text">Username: <strong>{{ user_profile.username }}</strong></p>
+            
+              
             {% endif %}
             </div>
           </div>
         </div>
+
       {% empty %}
         <p>No user profiles found.</p>
       {% endfor %}
+      <div class="col-md-10">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body profile-info">
+          {% for user_profile in object_list %}
+          {% if user_profile.username == user.username%}
+          <h4>Bio </h4>
+          <p class="card-text"> <strong>{{ user_profile.bio }}</strong></p>
+          {% endif %}
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body profile-info">
+          {% for user_profile in object_list %}
+          {% if user_profile.username == user.username%}
+          <h4>Languages </h4>
+          {% for lang in user_profile.language.all %}
+          <p class="card-text"> <strong>{{ lang.name }} </strong></p>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body profile-info">
+          {% for user_profile in object_list %}
+          {% if user_profile.username == user.username%}
+          <h4>Skills </h4>
+          {% for lang in user_profile.skills.all %}
+          <p class="card-text"> <strong>{{ lang.name }} </strong></p>
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-{% endblock %}
+
 
 <style>
   .profile-pic-container {
@@ -39,6 +85,10 @@
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
+    margin-top: 10px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
   }
   
   .profile-pic {
@@ -48,7 +98,7 @@
   }
 
   .profile-info {
-    color:blue;
+    color:gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,3 +114,4 @@
     margin: 0;
   }
 </style>
+{% endblock %}
