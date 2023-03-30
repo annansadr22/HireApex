@@ -5,17 +5,25 @@ from django.urls import reverse
 # Create your models here.
 
 class UserProfile(models.Model):
+    LANGUAGES = (
+        ('en', 'English'),
+        ('fr', 'French'),
+        ('es', 'Spanish'),
+        ('de', 'German'),
+    )
     username = models.CharField(primary_key=True, max_length=50)
     full_name = models.CharField(max_length=100)
-    profile_picture = models.ImageField(upload_to='static/', blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='profiles/', blank=True, null=True)
     money_per_hour = models.DecimalField(max_digits=6, decimal_places=2)
+    language = models.CharField(max_length=2, choices=LANGUAGES, default=False)
+    skills = models.ManyToManyField('SkillSet')
     #time_spent_on_web = models.DurationField()
     job_created=models.ManyToManyField('JobProfile')
 
     def __str__(self):
         return self.username
-    def get_absolute_url(self):
-        return reverse('home')
+    # def get_absolute_url(self): 
+    #     return reverse('home')
     
 
 class JobProfile(models.Model):
