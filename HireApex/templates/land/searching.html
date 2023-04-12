@@ -1,0 +1,95 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+    
+<div class="flex">
+    <div class="container">
+    <h1>Search results:</h1>
+    {% if results %}
+        <ul>
+        {% for item in results %}
+            <!--li>{{ item.job_name }}</li-->
+            <div class="col-md-10">
+                <div class="card mb-4 shadow-sm">
+                    <h1>{{ item.job_name }}</h1>
+                    <div class="card-body profile-info">
+                        <p class="card-text">Description: <strong>{{ item.job_description }}</strong></p>
+                        <p class="card-text">Salary per Hour: <strong>{{ item.money_hr }}</strong></p>
+                        <p class="card-text">Duration (in hours): <strong>{{ item.duration_of_employment }}</strong></p>
+                        <button class="btn btn-primary" type="button">Apply</button>
+                    </div>
+                    
+                  
+                </div>
+              </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
+{% block styles %}
+
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+    }
+    .search-container input[type=text] {
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px #ddd;
+      width: 80%;
+      max-width: 500px;
+      font-size: 24px;
+      text-align: center;
+      outline: none;
+    }
+    .search-container input[type=text]:focus {
+      box-shadow: 0px 0px 10px #aaa;
+    }
+    .search-container button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+    .search-container button:hover {
+      background-color: #0062cc;
+    }
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 36px;
+      }
+      .search-container input[type=text] {
+        font-size: 20px;
+      }
+      .search-container button {
+        font-size: 20px;
+      }
+    }
+  </style>
+{% endblock %}

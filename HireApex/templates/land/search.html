@@ -1,16 +1,83 @@
 {% extends 'account/base.html' %}
 
 {% block content %}
+
   <h1>Search for Jobs</h1>
   <div class="search-container">
-    <form>
-      <input type="text" placeholder="Enter keywords...">
-      <button type="submit">Search</button>
+    <form action="{% url 'searching' %}" method="GET">
+      <div class="input-group">
+        <input type="text" name="q" value="{{ query }}" placeholder="Search...">
+        <!--button type="submit">Search</button-->
+        
+      </div>
+      <!--div class="form-group mt-3">
+        <label for="location">Languages:</label>
+        <select class="form-control" id="language">
+          <option value="">All Languages</option>
+          <option value="English">English</option>
+          <option value="English">Hindi</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Persian">Persian</option>
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <label for="job-type">Skills:</label>
+        <select class="form-control" id="job-type">
+          <option value="">All Skills</option>
+          <option value="JAVA">JAVA</option>
+          <option value="C++">C++</option>
+          <option value="Python">Python</option>
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <label for="money-per-hour">Money per Hour:</label>
+        <div class="row">
+          <div class="col-5">
+            <input type="number" class="form-control" id="min-money-per-hour" placeholder="Min">
+          </div>
+          <div class="col-2 text-center">
+            <span>-</span>
+          </div>
+          <div class="col-5">
+            <input type="number" class="form-control" id="max-money-per-hour" placeholder="Max">
+          </div>
+        </div>
+      </div-->
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
     </form>
   </div>
-{% endblock %}
 
+  <div class="flex">
+    <div class="container">
+      <h1>All Jobs</h1>
+      <div class="row">
+        {% for job_profile in object_list %}
+          <div class="col-md-10">
+            <div class="card mb-4 shadow-sm">
+                <h1>{{ job_profile.job_name }}</h1>
+                <div class="card-body profile-info">
+                    <p class="card-text">Description: <strong>{{ job_profile.job_description }}</strong></p>
+                    <p class="card-text">Salary per Hour: <strong>{{ job_profile.money_hr }}</strong></p>
+                    <p class="card-text">Duration (in hours): <strong>{{ job_profile.duration_of_employment }}</strong></p>
+                    <button class="btn btn-primary" type="button">Apply</button>
+                </div>
+                
+              
+            </div>
+          </div>
+  
+        
+        {% endfor %}
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
 {% block styles %}
+
   <style>
     body {
       background-color: #f2f2f2;
@@ -29,7 +96,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 20vh;
+      height: 50vh;
     }
     .search-container input[type=text] {
       padding: 10px;

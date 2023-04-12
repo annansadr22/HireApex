@@ -10,8 +10,9 @@ urlpatterns = [
     path('contact-us/', TemplateView.as_view(template_name='extra/contactus.html'),name='contact_us'),
     path('form-job/', views.JobProfileCreate.as_view(),name='form_job'),
     path('form-freelance/', views.UserProfileCreate.as_view(),name='form_freelance'),
-    path('search/', TemplateView.as_view(template_name='land/search.html'),name='search'),
+    path('search/', views.JobProfileListView.as_view(),name='search'),
     path('profile/', views.UserProfileListView.as_view(),name='profile'),
+    path('searching/', views.search, name='searching'),
     
 ]
 urlpatterns += staticfiles_urlpatterns()

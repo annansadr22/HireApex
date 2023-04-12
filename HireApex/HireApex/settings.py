@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [ '127.0.0.1','.vercel.app', '.now.sh']
 
 INSTALLED_APPS = [
     'land.apps.LandConfig',
+    'chat.apps.ChatConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +48,9 @@ INSTALLED_APPS = [
 
     
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'channels',
+    
 
     
     
@@ -92,7 +95,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 SITE_ID = 1
 
-WSGI_APPLICATION = 'HireApex.wsgi.application'
+ASGI_APPLICATION = 'HireApex.asgi.application'
 
 
 # Database
@@ -176,3 +179,13 @@ LOGIN_REDIRECT_URL='home'
 ACCOUNT_LOGOUT_REDIRECT_URL= 'account_login'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('127.0.0.1', 6379)],
+        # }
+    }
+}
+

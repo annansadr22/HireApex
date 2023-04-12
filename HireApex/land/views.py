@@ -78,8 +78,23 @@ class UserProfileCreate(CreateView):
 class UserProfileListView(ListView):
     queryset=UserProfile.objects.all()
     
-    
+
 class JobProfileCreate(CreateView):
     model = JobProfile
     fields = [ 'job_name', 'job_description','duration_of_employment','money_hr']
 
+
+
+class JobProfileListView(ListView):
+    queryset=JobProfile.objects.all()
+    template_name = 'land/search.html'
+
+
+from django.db.models import Q
+
+def search(request):
+    if 'q' in request.GET:
+        query = request.GET['q']
+    results = JobProfile.objects.filter(Q(job_name__icontains=query) | Q(job_description__icontains=query)).distinct()
+    context = {'results': results, 'query': query}
+    return render(request, 'land/searching.html', context)

@@ -1,16 +1,15 @@
 
 {% extends 'account/base.html' %}
-{% load static %}
-    <link rel=”stylesheet” href=”{% static "css/1.css" %}”>
 {% block content %}
 <div class="flex">
   <div class="container">
     <h1>Profile</h1>
     <div class="row">
       {% for user_profile in object_list %}
+      {% if user_profile.username == user.username%}
         <div class="col-md-10">
           <div class="card mb-4 shadow-sm">
-            {% if user_profile.username == user.username%}
+            
             {% if user_profile.profile_picture %}
             <div class="profile-pic-container">
               <img class="profile-pic" src="{{ user_profile.profile_picture.url }}" alt="Profile pic" height="200" width="200" >
@@ -22,7 +21,7 @@
               </div>
             {% endif %}
             <div class="card-body profile-info">
-              <h4>{{ user_profile.full_name }}</h4>
+              <h2>{{ user_profile.full_name }}</h2>
               <p class="card-text">Username: <strong>{{ user_profile.username }}</strong></p>
             
               
@@ -39,7 +38,7 @@
           <div class="card-body profile-info">
           {% for user_profile in object_list %}
           {% if user_profile.username == user.username%}
-          <h4>Bio </h4>
+          <h2>Bio </h2>
           <p class="card-text"> <strong>{{ user_profile.bio }}</strong></p>
           {% endif %}
           {% endfor %}
@@ -49,15 +48,15 @@
       <div class="col-md-10">
         <div class="card mb-4 shadow-sm">
           <div class="card-body profile-info">
-          {% for user_profile in object_list %}
-          {% if user_profile.username == user.username%}
-          <h4>Languages </h4>
-          {% for lang in user_profile.language.all %}
-          <p class="card-text"> <strong>{{ lang.name }} </strong></p>
-          {% endfor %}
-          {% endif %}
-          {% endfor %}
-        </div>
+            {% for user_profile in object_list %}
+            {% if user_profile.username == user.username%}
+            <h2>Languages </h2>
+            {% for lang in user_profile.language.all %}
+            <p class="card-text"> <strong>{{ lang.name }} </strong></p>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="col-md-10">
@@ -65,7 +64,7 @@
           <div class="card-body profile-info">
           {% for user_profile in object_list %}
           {% if user_profile.username == user.username%}
-          <h4>Skills </h4>
+          <h2>Skills </h2>
           {% for lang in user_profile.skills.all %}
           <p class="card-text"> <strong>{{ lang.name }} </strong></p>
           {% endfor %}
@@ -77,6 +76,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 <style>
