@@ -6,3 +6,4 @@ admin.site.register(UserProfile)
 admin.site.register(JobProfile)
 admin.site.register(Language)
 admin.site.register(SkillSet)
+

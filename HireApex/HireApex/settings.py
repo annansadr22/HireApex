@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [ '127.0.0.1','.vercel.app', '.now.sh']
 INSTALLED_APPS = [
     'land.apps.LandConfig',
     'chat.apps.ChatConfig',
+    'ratings.apps.RatingsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'channels',
+    'django_social_share',
+    'actstream',
     
 
     

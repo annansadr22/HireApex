@@ -13,6 +13,8 @@ urlpatterns = [
     path('search/', views.JobProfileListView.as_view(),name='search'),
     path('profile/', views.UserProfileListView.as_view(),name='profile'),
     path('searching/', views.search, name='searching'),
+    #path('ratings/', TemplateView.as_view(template_name='land/ratings.html'), name='ratings'),
     
+   
 ]
 urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,11 @@
+
+
+{% block content %}
+  <h1>My Ratings</h1>
+  <ul>
+    {% for rating in ratings %}
+      <li>{{ rating.rating_value }}/5</li>
+    {% endfor %}
+  </ul>
+  <p>Average rating: {{ user.ratings.average_rating }}</p>
+{% endblock %}
