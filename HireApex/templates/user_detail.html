@@ -1,0 +1,55 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4">{{ user.username }}</h1>
+      {% if average_rating %}
+        <p class="text-center">Average rating: {{ average_rating }} stars</p>
+      {% else %}
+        <p class="text-center">This user has not yet been rated.</p>
+      {% endif %}
+      <form method="post" action="{% url 'rate_user' user_id=user.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="value">Rate {{ user.username }}:</label>
+          <select name="value" id="value" class="form-control">
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+  h1 {
+    color: #17a2b8;
+    font-weight: bold;
+  }
+  p {
+    color: #6c757d;
+  }
+  label {
+    color: #343a40;
+  }
+  select {
+    border: 2px solid #17a2b8;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  button {
+    background-color: #17a2b8;
+    border: none;
+  }
+</style>
+{% endblock %}

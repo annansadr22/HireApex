@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('land.urls')),
     path('chat/', include('chat.urls')),
-    path('users/', include('ratings.urls')),
+    path('users/', include('rate.urls')),
     #path('home/', TemplateView.as_view(template_name='dashboard/home.html'),name='home'),
     #path('faq/', TemplateView.as_view(template_name='extra/faq.html'),name='faq'),
     #path('contact-us/', TemplateView.as_view(template_name='extra/contactus.html'),name='contact_us'),

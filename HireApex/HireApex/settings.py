@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'land.apps.LandConfig',
     'chat.apps.ChatConfig',
     'ratings.apps.RatingsConfig',
+    'rate.apps.RateConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
